@@ -23,36 +23,36 @@ bool SubString::IfUnique() {
 	char* p1 = begin;
 	char* p2 = end;
 
-	//ÒÔp1Îª»ù×¼
+	//ä»¥p1ä¸ºåŸºå‡†
 	while (p1 < end) {
-		//´Ó½áÎ²Íùp1±éÀú
+		//ä»ç»“å°¾å¾€p1éå†
 		while (p2 > p1) {
 			if (*p2 == *p1) {
-				return false;//ÏàÍ¬Ôò·µ»Øfalse
+				return false;//ç›¸åŒåˆ™è¿”å›false
 			}
 			p2--;
 		}
-		//Ò»¸ö±éÀú×ßÍêËµÃ÷µ±Ç°Ã»ÓĞÖØ¸´
+		//ä¸€ä¸ªéå†èµ°å®Œè¯´æ˜å½“å‰æ²¡æœ‰é‡å¤
 
 		p1++;
-		p2 = end;//ÖØĞÂÉèÖÃ»Ø½áÎ²
+		p2 = end;//é‡æ–°è®¾ç½®å›ç»“å°¾
 	}
-	//Õû¸öÑ­»·×ßÍêËµÃ÷Ã»ÓĞÖØ¸´
+	//æ•´ä¸ªå¾ªç¯èµ°å®Œè¯´æ˜æ²¡æœ‰é‡å¤
 
 	return true;
 }
 
 void SubString::Walk() {
-	int result;//±£´æÖĞ¼ä½á¹û
+	int result;//ä¿å­˜ä¸­é—´ç»“æœ
 
-	//µ±¿ÉÄÜĞÔĞ¡ÓÚ³¤¶ÈÊ±
+	//å½“å¯èƒ½æ€§å°äºé•¿åº¦æ—¶
 	while (much < length) {
 		begin = string;
 		end = string + length - much;
-		//ÉèÖÃºÃ³õÊ¼ºÍ½áÎ²
+		//è®¾ç½®å¥½åˆå§‹å’Œç»“å°¾
 
 		while (end <= string + length - 1) {
-			//Èç¹ûµ±Ç°×Ó×Ö·û´®ÊÇ²»ÖØ¸´µÄ
+			//å¦‚æœå½“å‰å­å­—ç¬¦ä¸²æ˜¯ä¸é‡å¤çš„
 			if (IfUnique()) {
 				result = (end - begin) / sizeof(char) + 1;
 				if (result > sublength) {
@@ -87,15 +87,15 @@ void SubStringOperate() {
 
 	char string[200];
 
-	cout << "ÇëÊäÈëÒ»¸ö×Ö·û´®£º";
+	cout << "è¯·è¾“å…¥ä¸€ä¸ªå­—ç¬¦ä¸²ï¼š";
 	cin.getline(string, 200);
 
 	if (string[0] == '\0') {
-		cout << "ÎŞÖØ¸´×Ö·û×î³¤×Ó´®³¤¶ÈÎª0£¡\n";
+		cout << "æ— é‡å¤å­—ç¬¦æœ€é•¿å­ä¸²é•¿åº¦ä¸º0ï¼\n";
 		return;
 	}
 
 	SubString s1(string);
 	s1.Walk();
-	cout << "ÎŞÖØ¸´×Ö·û×î³¤×Ó´®³¤¶ÈÎª£º" << s1.Get_sublength() << endl;
+	cout << "æ— é‡å¤å­—ç¬¦æœ€é•¿å­ä¸²é•¿åº¦ä¸ºï¼š" << s1.Get_sublength() << endl;
 }
